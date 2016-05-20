@@ -11,21 +11,21 @@ object Solution3 {
     val numbers : Array[Int] = Stream.from(1).map(Math.pow(_,N)).takeWhile(_ < X).map(_.toInt).toArray
     val n = numbers.length
 
-    val subset = Array.ofDim[Boolean](X+1, n+1)
+    val subset = Array.ofDim[Int](X+1, n+1)
 
     for (i <- 0 to n) {
-      subset(0)(i) = true
+      subset(0)(i) = 1
     }
 
     for (i <- 1 to X) {
-      subset(i)(0) = false
+      subset(i)(0) = 0
     }
 
     for (i <- 1 to X; j  <- 1 to n ) {
       subset(i)(j) = subset(i)(j-1)
       val number : Int = numbers(j-1)
       if (i >= number) {
-        subset(i)(j) = subset(i)(j) || subset(i-number)(j-1)
+        subset(i)(j) = Math.max(subset(i)(j), subset(i-number)(j-1))+1;
       }
     }
 
