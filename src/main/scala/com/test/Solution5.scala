@@ -17,7 +17,17 @@ object Solution5 {
     println(gcd(A, B))
   }
 
-  def gcd(A: Array[Int], B: Array[Int]) : Int = {
-    0
+  def gcd(A: Array[Int], B: Array[Int]): Int = {
+    gcd(A.tail, removeFactor(A.head, B))
+  }
+
+  def gcd(a: Int, b: Int) : Int = {
+    if (b==0) b else gcd(b,a%b)
+  }
+
+  def removeFactor(a: Int, B: Array[Int]): Array[Int] = {
+    // remove as a factor for only one of the elements in B
+    // e.j. a=2, b=(2, 5, 4, 34) => result=(1,5,4,34)
+    B
   }
 }
