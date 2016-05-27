@@ -18,7 +18,11 @@ object Solution5 {
   }
 
   def gcd(A: Array[Int], B: Array[Int]): Int = {
-    gcd(A.tail, removeFactor(A.head, B))
+    if (A.length == 1) {
+      A.head
+    } else {
+      gcd(A.tail, removeFactor(A.head, B))
+    }
   }
 
   def gcd(a: Int, b: Int) : Int = {
