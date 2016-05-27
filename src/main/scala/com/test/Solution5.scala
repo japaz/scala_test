@@ -22,7 +22,6 @@ object Solution5 {
       1
     } else {
       val part = removeFactor(A.head, B)
-      println(part)
       part._1*gcd(A.tail, part._2)
     }
   }
