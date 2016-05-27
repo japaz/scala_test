@@ -26,12 +26,17 @@ object Solution5 {
   }
 
   def gcd(a: Int, b: Int) : Int = {
-    if (b==0) b else gcd(b,a%b)
+    if (b==0) a else gcd(b,a%b)
   }
 
   def removeFactor(a: Int, B: Array[Int]): Array[Int] = {
     // remove as a factor for only one of the elements in B
     // e.j. a=2, b=(2, 5, 4, 34) => result=(1,5,4,34)
-    B
+    var temp = gcd(a, B.head)
+    if ( temp == 1) {
+      B.head +: removeFactor(a, B.tail)
+    } else {
+      B.head / temp +: B.tail
+    }
   }
 }
