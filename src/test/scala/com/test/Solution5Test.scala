@@ -12,12 +12,13 @@ class Solution5Test  extends FunSuite with Matchers {
   }
 
   test("Remove factor should remove the factor from the first element that divide in a one array") {
-    Solution5.removeFactor(2, Array(2)) should equal(Array(1))
+    Solution5.removeFactor(2, Array(2))._2 should equal(Array(1))
+    Solution5.removeFactor(2, Array(2))._1 should equal(2)
   }
 
 
   test("Remove factor should remove the factor from the first element that divide") {
-    Solution5.removeFactor(2, Array(2,5,4,34)) should equal(Array(1,5,4,34))
+    Solution5.removeFactor(2, Array(2,5,4,34))._2 should equal(Array(1,5,4,34))
   }
 
 }
