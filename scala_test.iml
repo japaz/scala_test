@@ -12,5 +12,7 @@
     <orderEntry type="library" name="org.scalatest:scalatest_2.11:3.0.0-M16-SNAP6" level="project" />
     <orderEntry type="library" name="scala-sdk-2.11.8" level="application" />
     <orderEntry type="library" name="org.scalatest:scalatest_2.11:3.0.0-SNAP13" level="project" />
+    <orderEntry type="library" name="org.scalatest:scalatest-matchers-core_2.11:3.0.0-SNAP13" level="project" />
+    <orderEntry type="library" name="org.scalatest:scalatest-matchers_2.11:3.0.0-SNAP13" level="project" />
   </component>
 </module>

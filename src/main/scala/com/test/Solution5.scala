@@ -18,10 +18,14 @@ object Solution5 {
   }
 
   def gcd(A: Array[Int], B: Array[Int]): Int = {
-    if (A.length == 1) {
+    if (A.length == 0 || B.length == 0) {
+      1
+    }else if (A.length == 1) {
       A.head
+    } else if (B.length == 1 ) {
+      B.head
     } else {
-      gcd(A.tail, removeFactor(A.head, B))
+        gcd(A.tail, removeFactor(A.head, B))
     }
   }
 
@@ -32,11 +36,15 @@ object Solution5 {
   def removeFactor(a: Int, B: Array[Int]): Array[Int] = {
     // remove as a factor for only one of the elements in B
     // e.j. a=2, b=(2, 5, 4, 34) => result=(1,5,4,34)
-    var temp = gcd(a, B.head)
-    if ( temp == 1) {
-      B.head +: removeFactor(a, B.tail)
+    if (B.isEmpty) {
+      B
     } else {
-      B.head / temp +: B.tail
+      var temp = gcd(a, B.head)
+      if (temp == 1) {
+        B.head +: removeFactor(a, B.tail)
+      } else {
+        B.head / temp +: B.tail
+      }
     }
   }
 }
