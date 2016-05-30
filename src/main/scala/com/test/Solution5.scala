@@ -24,9 +24,10 @@ object Solution5 {
     if (A.length == 0 || B.length == 0) {
       1
     } else {
-      val part = removeFactor(A.head, B)
-      println(stringOf(part._2))
-      part._1*gcd(A.tail, part._2)
+      // Repite this until sub_gcd is 1
+      // each time providing A.head / sub_gcd
+      val (sub_gcd, rest) = removeFactor(A.head, B)
+      sub_gcd*gcd(A.tail, rest)
     }
   }
 
