@@ -1,5 +1,8 @@
 package com.test
 
+import scala.runtime.ScalaRunTime._
+
+
 /**
   * Created by alberto.paz on 25/05/2016.
   */
@@ -22,6 +25,7 @@ object Solution5 {
       1
     } else {
       val part = removeFactor(A.head, B)
+      println(stringOf(part._2))
       part._1*gcd(A.tail, part._2)
     }
   }
@@ -36,7 +40,7 @@ object Solution5 {
     if (B.isEmpty) {
       (1, B)
     } else {
-      var temp = gcd(a, B.head)
+      val temp = gcd(a, B.head)
       if (temp == 1) {
         val part = removeFactor(a, B.tail)
         (part._1, B.head +: part._2)
