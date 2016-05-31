@@ -20,9 +20,11 @@ class Solution5Test  extends FunSuite with Matchers {
     Solution5.removeFactor(2, Array(2))._1 should equal(2)
   }
 
+  test("Remove factor should remove the factor from the all the elements that divide") {
+    Solution5.removeFactor(4, Array(2,2,4,34))._2 should equal(Array(1,1,4,34))
+  }
 
   test("Remove factor should remove the factor from the first element that divide") {
     Solution5.removeFactor(2, Array(2,5,4,34))._2 should equal(Array(1,5,4,34))
   }
-
 }

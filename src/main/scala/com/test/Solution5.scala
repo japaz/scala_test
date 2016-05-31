@@ -24,8 +24,6 @@ object Solution5 {
     if (A.length == 0 || B.length == 0) {
       1
     } else {
-      // Repite this until sub_gcd is 1
-      // each time providing A.head / sub_gcd
       val (sub_gcd, rest) = removeFactor(A.head, B)
       sub_gcd*gcd(A.tail, rest)
     }
@@ -36,18 +34,14 @@ object Solution5 {
   }
 
   def removeFactor(a: Int, B: Array[Int]): (Int, Array[Int]) = {
-    // remove as a factor for only one of the elements in B
-    // e.j. a=2, b=(2, 5, 4, 34) => result=(1,5,4,34)
-    if (B.isEmpty) {
+    // remove as a factor for all of the elements in B
+    // e.j. a=4, b=(2, 2, 4, 34) => result=(1,1,4,34)
+    if (a == 1 || B.isEmpty) {
       (1, B)
     } else {
-      val temp = gcd(a, B.head)
-      if (temp == 1) {
-        val part = removeFactor(a, B.tail)
-        (part._1, B.head +: part._2)
-      } else {
-        (temp, B.head / temp +: B.tail)
-      }
+      val cal_gcd = gcd(a, B.head)
+      val part = removeFactor(a / cal_gcd, B.tail)
+      (cal_gcd * part._1, B.head / cal_gcd +: part._2)
     }
   }
 }
